@@ -41,6 +41,10 @@ python -m pip install ./ts-dar
 
 ## Quick start
 
+### Note
+
+Our python package name is currently tsdart.
+
 ### Start with jupyter notebook
 
 Check these two files for the demo:
