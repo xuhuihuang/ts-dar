@@ -32,11 +32,11 @@ The source code can be installed with a local clone:
 The most time-consuming step is the installation of PyTorch (especially cuda version) and the whole installation procedure takes around 5 mins to complete at a local desktop.
 
 ```bash
-git clone https://github.com/xuhuihuang/ts-dart.git
+git clone https://github.com/xuhuihuang/ts-dar.git
 ```
 
 ```bash
-python -m pip install ./ts-dart
+python -m pip install ./ts-dar
 ```
 
 ## Quick start
@@ -46,11 +46,11 @@ python -m pip install ./ts-dart
 Check these two files for the demo:
 
 ```
-./ts-dart/example/muller-example.ipynb
+./ts-dar/example/muller-example.ipynb
 ```
 
 ```
-./ts-dart/example/quadruple-well-example.ipynb
+./ts-dar/example/quadruple-well-example.ipynb
 ```
 
 ### Start with python script (Linux)
@@ -58,7 +58,7 @@ Check these two files for the demo:
 The whole training procedure of the following demo on i9-10900k cpu takes around 30mins to complete at a local desktop.
 
 ```sh
-python ./ts-dart/scripts/train_tsdart.py \
+python ./ts-dar/scripts/train_tsdart.py \
     --seed 1 \
     --device 'cpu' \
     --lag_time 10 \
@@ -74,17 +74,17 @@ python ./ts-dart/scripts/train_tsdart.py \
     --n_epochs 20 \
     --train_split 0.9 \
     --train_batch_size 1000 \
-    --data_directory ./ts-dart/data/quadruple-well \
+    --data_directory ./ts-dar/data/quadruple-well \
     --saving_directory . 
 ```
 
 Or
 ```
-sh ./ts-dart/scripts/train_tsdart.sh
+sh ./ts-dar/scripts/train_tsdart.sh
 ```
 
 ## Compiling Document Environment
-Once you have already installed ts-dart in your conda environment. 
+Once you have already installed ts-dar in your conda environment. 
 ```bash
 python -m pip install -U sphinx
 pip install sphinx-rtd-theme
@@ -98,7 +98,7 @@ You can also visit our [documentation online](https://bojunliu0818.github.io/ts-
 
 ## More instructions 
 
-TS-DART refers to the preprint [10.26434/chemrxiv-2024-r8gjv](https://chemrxiv.org/engage/chemrxiv/article-details/65adf0b966c1381729fb4c11).
+TS-DAR refers to the preprint [10.26434/chemrxiv-2024-r8gjv](https://chemrxiv.org/engage/chemrxiv/article-details/65adf0b966c1381729fb4c11).
 
 We already added the example of Muller potential reported in this preprint to the repo. 
 
