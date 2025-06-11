@@ -97,9 +97,14 @@ class DisLoss(nn.Module):
 
     scaling_temperature : float, default = 0.1
         The scaling hyperparameter to compute dispersion loss. 
+
+    fast_mode : bool, default = False
+        If True, use the mean of features for each label to update prototypes.
+            This is a matrix operation thus faster.
+        If False, use the features of each data point
     """
 
-    def __init__(self, feat_dim, n_states, device, proto_update_factor=0.5, scaling_temperature=0.1):
+    def __init__(self, feat_dim, n_states, device, proto_update_factor=0.5, scaling_temperature=0.1, fast_mode=False):
         super(DisLoss, self).__init__()
 
         self._score = None
@@ -110,8 +115,9 @@ class DisLoss(nn.Module):
         self.device = device
         self.proto_update_factor = proto_update_factor
         self.scaling_temperature = scaling_temperature
+        self.fast_mode = fast_mode
     
-    def forward(self, features, labels):
+    def forward(self, features, labels, fast_mode=None):
         """ Compute dispersion loss at every call.
 
         Parameters
@@ -122,17 +128,44 @@ class DisLoss(nn.Module):
         labels : torch.Tensor
             Metastable states of a batch of data. 
 
+        fast_mode : bool, default = None
+            If None, use the class's fast_mode attribute.
+            If True, use the mean of features for each label to update prototypes.
+            If False, use the features of each data point
+
         Returns
         -------
         loss : torch.Tensor
             Dispersion loss
         """
-
         prototypes = self.prototypes.to(device=self.device)
-        for i in range(len(labels)):
-            prototypes[labels[i].item()] = F.normalize((self.proto_update_factor*prototypes[labels[i].item()] + (1-self.proto_update_factor)*features[i]), dim=0)
-        self.prototypes = prototypes.detach()
 
+        if fast_mode is None:
+            fast_mode = self.fast_mode
+
+        if fast_mode:
+            # batch EMA
+            labels = labels.view(-1)
+            batch_size = labels.size(0)
+            one_hot = torch.zeros(batch_size, self.n_states, device=self.device)
+            one_hot.scatter_(1, labels.unsqueeze(1), 1.0)
+            prototypes_sum = one_hot.t() @ features
+            counts = one_hot.sum(dim=0)
+            count_mask = counts > 0
+            counts_for_div = torch.where(count_mask, counts, torch.ones_like(counts))
+            mean_feats = prototypes_sum / counts_for_div.unsqueeze(1)
+            updated = torch.where(
+                count_mask.unsqueeze(1),
+                self.proto_update_factor * prototypes + (1 - self.proto_update_factor) * mean_feats,
+                prototypes
+            )
+            prototypes[count_mask] = F.normalize(updated[count_mask], dim=1)
+        else:
+            # EMA per datapoint
+            for i in range(len(labels)):
+                prototypes[labels[i].item()] = F.normalize((self.proto_update_factor*prototypes[labels[i].item()] + (1-self.proto_update_factor)*features[i]), dim=0)
+
+        self.prototypes = prototypes.detach()
         logits = torch.div(torch.matmul(prototypes,prototypes.T),self.scaling_temperature)
         proxy_labels = torch.arange(0, self.n_states).to(device=self.device)
         proxy_labels = proxy_labels.contiguous().view(-1, 1)
