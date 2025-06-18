@@ -175,12 +175,16 @@ class TSDART:
 
     print : boolean, default = False
         Whether to print the validation loss every epoch during the training. 
+
+    fast_mode : boolean, default = False
+        Whether to use fast mode for DisLoss.
+        Fast mode uses batch EMA to update prototypes, but may be less accurate then EMA per datapoint.
     """
 
     def __init__(self, lobe, optimizer='Adam', device=None, learning_rate=1e-3,
                  epsilon=1e-6, mode='regularize', symmetrized=False, dtype=np.float32, 
                  feat_dim=2, n_states=4, proto_update_factor=0.5, scaling_temperature=0.1, beta=0.01, 
-                 save_model_interval=None, pretrain=0, print=False):
+                 save_model_interval=None, pretrain=0, print=False, fast_mode=False):
         
         self._lobe = lobe
         self._device = device
@@ -196,6 +200,7 @@ class TSDART:
         self._beta = beta
         self._save_model_interval = save_model_interval
         self._pretrain = pretrain
+        self._fast_mode = fast_mode
         if self._dtype == np.float32:
             self._lobe = self._lobe.float()
         elif self._dtype == np.float64:
@@ -215,7 +220,7 @@ class TSDART:
         self._validation_dis = []
         self._validation_prototypes = []
         self._vamploss = VAMPLoss(epsilon=self._epsilon, mode=self._mode, symmetrized=self._symmetrized)
-        self._disloss = DisLoss(feat_dim=feat_dim,n_states=n_states,device=device,proto_update_factor=proto_update_factor,scaling_temperature=scaling_temperature)
+        self._disloss = DisLoss(feat_dim=feat_dim,n_states=n_states,device=device,proto_update_factor=proto_update_factor,scaling_temperature=scaling_temperature,fast_mode=fast_mode)
         self._proto = Prototypes(n_states=n_states,device=device,scaling_temperature=scaling_temperature)
 
     @property
