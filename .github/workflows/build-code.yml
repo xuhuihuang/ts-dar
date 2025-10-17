@@ -1,4 +1,4 @@
-name: Build TS-DART source code
+name: Build TS-DAR source code
 
 on:
   push:
