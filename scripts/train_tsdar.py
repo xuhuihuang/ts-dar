@@ -12,7 +12,7 @@ from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import random_split
 
 from tsdar.utils import set_random_seed
-from tsdar.model import TSDART, TSDARTLayer, TSDARTModel, TSDARTEstimator
+from tsdar.model import TSDAR, TSDARLayer, TSDARTModel, TSDAREstimator
 from tsdar.dataprocessing import Preprocessing
 
 parser = argparse.ArgumentParser(description='Training with TS-DAR')
@@ -93,10 +93,10 @@ def main():
         else:
             loader_val = DataLoader(val_data, batch_size=args.val_batch_size, shuffle=False)
 
-    lobe = TSDARTLayer(args.encoder_sizes,n_states=args.n_states)
+    lobe = TSDARLayer(args.encoder_sizes,n_states=args.n_states)
     lobe = lobe.to(device=device)
 
-    tsdar = TSDART(lobe=lobe, learning_rate=args.learning_rate, device=device, beta=args.beta, feat_dim=args.feat_dim, n_states=args.n_states, 
+    tsdar = TSDAR(lobe=lobe, learning_rate=args.learning_rate, device=device, beta=args.beta, feat_dim=args.feat_dim, n_states=args.n_states, 
                     pretrain=args.pretrain, save_model_interval=args.save_model_interval)
     tsdart_model = tsdar.fit(loader_train, n_epochs=args.n_epochs, validation_loader=loader_val).fetch_model()
 
@@ -121,7 +121,7 @@ def main():
         metastable_states = tsdart_model.transform(data=data,return_type='states')
         softmax_probs = tsdart_model.transform(data=data,return_type='probs')
 
-        tsdart_estimator = TSDARTEstimator(tsdart_model)
+        tsdart_estimator = TSDAREstimator(tsdart_model)
         ood_scores = tsdart_estimator.fit(data).ood_scores
         state_centers = tsdart_estimator.fit(data).state_centers
 
@@ -164,7 +164,7 @@ def main():
             metastable_states = tsdar._save_models[i].transform(data=data,return_type='states')
             softmax_probs = tsdar._save_models[i].transform(data=data,return_type='probs')
 
-            tsdart_estimator = TSDARTEstimator(tsdar._save_models[i])
+            tsdart_estimator = TSDAREstimator(tsdar._save_models[i])
             ood_scores = tsdart_estimator.fit(data).ood_scores
             state_centers = tsdart_estimator.fit(data).state_centers
 

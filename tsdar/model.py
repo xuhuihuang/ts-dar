@@ -7,7 +7,7 @@ from tqdm import *
 from .loss import VAMPLoss, DisLoss, Prototypes
 from .utils import map_data
 
-class TSDARTLayer(nn.Module):
+class TSDARLayer(nn.Module):
     """ Create TS-DAR lobe.
 
     Parameters
@@ -121,7 +121,7 @@ class TSDARTModel:
         else:
             raise ValueError('Valid return types: probs, states, hypersphere_embs')
 
-class TSDART:
+class TSDAR:
     """ The method used to train TS-DAR.
 
     Parameters
@@ -253,7 +253,7 @@ class TSDART:
 
         Returns
         -------
-        self : TSDART
+        self : TSDAR
         """
 
         batch_0, batch_1 = data[0], data[1]
@@ -319,7 +319,7 @@ class TSDART:
 
         Returns
         -------
-        self : TSDART
+        self : TSDAR
         """
 
         for epoch in progress(range(n_epochs), desc="epoch", total=n_epochs, leave=False):
@@ -358,7 +358,7 @@ class TSDART:
 
         return TSDARTModel(lobe, device=self._device, dtype=self._dtype)
     
-class TSDARTEstimator:
+class TSDAREstimator:
     """ The TS-DAR estimator the generate the state center vectors and ood scores of original trajectories.
 
     Parameters
@@ -398,7 +398,7 @@ class TSDARTEstimator:
 
         Returns
         -------
-        self : TSDARTEstimator
+        self : TSDAREstimator
         """
 
         states = self._model.transform(data, return_type='states')
