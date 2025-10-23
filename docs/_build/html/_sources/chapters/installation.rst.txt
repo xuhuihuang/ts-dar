@@ -32,11 +32,11 @@ Installation for source
     ./Anaconda3-2024.06-1-Linux-x86_64.sh
 
 
-2. Create a new ``conda`` virtual environment and install the ts-dart source code locally:
+2. Create a new ``conda`` virtual environment and install the ts-dar source code locally:
 
 .. code-block:: bash
 
-    conda create -n ts-dart python=3.9
-    conda activate ts-dart
-    git clone https://github.com/xuhuihuang/ts-dart.git
-    python -m pip install ./ts-dart
+    conda create -n ts-dar python=3.9
+    conda activate ts-dar
+    git clone https://github.com/xuhuihuang/ts-dar.git
+    python -m pip install ./ts-dar

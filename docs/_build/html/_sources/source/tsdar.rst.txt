@@ -1,34 +1,34 @@
-tsdart package
+tsdar package
 ==============
 
-tsdart.dataprocessing module
+tsdar.dataprocessing module
 ----------------------------
 
-.. automodule:: tsdart.dataprocessing
+.. automodule:: tsdar.dataprocessing
    :members:
    :undoc-members:
    :show-inheritance:
 
-tsdart.loss module
+tsdar.loss module
 ------------------
 
-.. automodule:: tsdart.loss
+.. automodule:: tsdar.loss
    :members:
    :undoc-members:
    :show-inheritance:
 
-tsdart.model module
+tsdar.model module
 -------------------
 
-.. automodule:: tsdart.model
+.. automodule:: tsdar.model
    :members:
    :undoc-members:
    :show-inheritance:
 
-tsdart.utils module
+tsdar.utils module
 -------------------
 
-.. automodule:: tsdart.utils
+.. automodule:: tsdar.utils
    :members:
    :undoc-members:
    :show-inheritance:

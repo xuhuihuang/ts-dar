@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quadruple-well potential &mdash; TS-DART 1.0.0 documentation</title>
+  <title>Quadruple-well potential &mdash; TS-DAR 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            TS-DART
+            TS-DAR
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -47,7 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../chapters/intro.html">Brief intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chapters/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chapters/tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/tsdart.html">tsdart package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tsdar.html">tsdar package</a></li>
 </ul>
 
         </div>
@@ -56,7 +56,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">TS-DART</a>
+          <a href="../../index.html">TS-DAR</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -82,10 +82,10 @@ from matplotlib import pyplot as plt
 from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import random_split
 
-from tsdart.utils import set_random_seed
-from tsdart.loss import Prototypes
-from tsdart.model import TSDART, TSDARTLayer, TSDARTEstimator
-from tsdart.dataprocessing import Preprocessing
+from tsdar.utils import set_random_seed
+from tsdar.loss import Prototypes
+from tsdar.model import TSDART, TSDARTLayer, TSDARTEstimator
+from tsdar.dataprocessing import Preprocessing
 </pre></div>
 </div>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if torch.cuda.is_available():
@@ -165,8 +165,8 @@ loader_val = DataLoader(val_data, batch_size=len(val_data), shuffle=False)
 lobe = TSDARTLayer([2,20,20,20,10,2],n_states=2)
 lobe = lobe.to(device=device)
 
-tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = &#39;regularize&#39;, beta=0.01, feat_dim=2, n_states=2, pretrain=10)
-tsdart_model = tsdart.fit(loader_train, n_epochs=20, validation_loader=loader_val).fetch_model()
+tsdar = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = &#39;regularize&#39;, beta=0.01, feat_dim=2, n_states=2, pretrain=10)
+tsdart_model = tsdar.fit(loader_train, n_epochs=20, validation_loader=loader_val).fetch_model()
 </pre></div>
 </div>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tsdart_estimator = TSDARTEstimator(tsdart_model)
@@ -263,8 +263,8 @@ loader_val = DataLoader(val_data, batch_size=len(val_data), shuffle=False)
 lobe = TSDARTLayer([2,20,20,20,10,2],n_states=3)
 lobe = lobe.to(device=device)
 
-tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = &#39;regularize&#39;, beta=0.01, feat_dim=2, n_states=3, pretrain=10)
-tsdart_model = tsdart.fit(loader_train, n_epochs=20, validation_loader=loader_val).fetch_model()
+tsdar = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = &#39;regularize&#39;, beta=0.01, feat_dim=2, n_states=3, pretrain=10)
+tsdart_model = tsdar.fit(loader_train, n_epochs=20, validation_loader=loader_val).fetch_model()
 </pre></div>
 </div>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tsdart_estimator = TSDARTEstimator(tsdart_model)
@@ -362,8 +362,8 @@ loader_val = DataLoader(val_data, batch_size=len(val_data), shuffle=False)
 lobe = TSDARTLayer([2,20,20,20,10,3],n_states=4)
 lobe = lobe.to(device=device)
 
-tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = &#39;regularize&#39;, beta=0.01, feat_dim=3, n_states=4, pretrain=10)
-tsdart_model = tsdart.fit(loader_train, n_epochs=20, validation_loader=loader_val).fetch_model()
+tsdar = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = &#39;regularize&#39;, beta=0.01, feat_dim=3, n_states=4, pretrain=10)
+tsdart_model = tsdar.fit(loader_train, n_epochs=20, validation_loader=loader_val).fetch_model()
 </pre></div>
 </div>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tsdart_estimator = TSDARTEstimator(tsdart_model)

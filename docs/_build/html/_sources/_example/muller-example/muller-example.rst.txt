@@ -8,10 +8,10 @@
     from torch.utils.data.dataloader import DataLoader
     from torch.utils.data import random_split
     
-    from tsdart.utils import set_random_seed
-    from tsdart.loss import Prototypes
-    from tsdart.model import TSDART, TSDARTLayer, TSDARTEstimator
-    from tsdart.dataprocessing import Preprocessing
+    from tsdar.utils import set_random_seed
+    from tsdar.loss import Prototypes
+    from tsdar.model import TSDART, TSDARTLayer, TSDARTEstimator
+    from tsdar.dataprocessing import Preprocessing
 
 .. code:: ipython3
 
@@ -117,8 +117,8 @@ Create dataset
     lobe = TSDARTLayer([2,20,20,20,10,2],n_states=2)
     lobe = lobe.to(device=device)
     ### 50 epochs for fully optimization
-    tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=2, pretrain=50)
-    tsdart_model = tsdart.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
+    tsdar = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=2, pretrain=50)
+    tsdart_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
 
 
 .. parsed-literal::
@@ -249,8 +249,8 @@ Create dataset
     lobe = TSDARTLayer([2,20,20,20,10,2],n_states=3)
     lobe = lobe.to(device=device)
     ### 50 epochs for fully optimization
-    tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=3, pretrain=50)
-    tsdart_model = tsdart.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
+    tsdar = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=3, pretrain=50)
+    tsdart_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
 
 
 .. parsed-literal::

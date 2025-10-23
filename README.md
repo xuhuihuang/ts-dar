@@ -43,7 +43,7 @@ python -m pip install ./ts-dar
 
 ### Note
 
-Our python package name is currently tsdart.
+Our python package name is currently tsdar.
 
 ### Start with jupyter notebook
 
@@ -98,7 +98,7 @@ cd docs
 make html
 ```
 (Warnings can be ignored!)
-You can also visit our [documentation online](https://bojunliu0818.github.io/ts-dart-doc/html/index.html)
+You can also visit our [documentation online](https://bojunliu0818.github.io/ts-dar-doc/html/index.html)
 
 ## More instructions 
 

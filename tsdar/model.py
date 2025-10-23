@@ -8,7 +8,7 @@ from .loss import VAMPLoss, DisLoss, Prototypes
 from .utils import map_data
 
 class TSDARTLayer(nn.Module):
-    """ Create TS-DART lobe.
+    """ Create TS-DAR lobe.
 
     Parameters
     ----------
@@ -53,12 +53,12 @@ class TSDARTLayer(nn.Module):
         return self.probs
 
 class TSDARTModel:
-    """ The TS-DART model from TS-DART.
+    """ The TS-DAR model from TS-DAR.
 
     Parameters
     ----------
     lobe : torch.nn.Module
-        TS-DART lobe.
+        TS-DAR lobe.
 
     device : torch device, default = None
         The device on which the torch modules are executed.
@@ -122,7 +122,7 @@ class TSDARTModel:
             raise ValueError('Valid return types: probs, states, hypersphere_embs')
 
 class TSDART:
-    """ The method used to train TS-DART.
+    """ The method used to train TS-DAR.
 
     Parameters
     ----------
@@ -359,12 +359,12 @@ class TSDART:
         return TSDARTModel(lobe, device=self._device, dtype=self._dtype)
     
 class TSDARTEstimator:
-    """ The TS-DART estimator the generate the state center vectors and ood scores of original trajectories.
+    """ The TS-DAR estimator the generate the state center vectors and ood scores of original trajectories.
 
     Parameters
     ----------
     tsdart_model : TSDARTModel
-        The trained TS-DART model.
+        The trained TS-DAR model.
     """
 
     def __init__(self, tsdart_model: TSDARTModel):
@@ -389,7 +389,7 @@ class TSDARTEstimator:
             return self._ood_scores
 
     def fit(self, data):
-        """ Fit the TS-DART model with original trajectories to compute OOD scores and state center vectors.
+        """ Fit the TS-DAR model with original trajectories to compute OOD scores and state center vectors.
 
         Parameters
         ----------

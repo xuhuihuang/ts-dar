@@ -10,7 +10,7 @@ import os
 import sys
 sys.path.insert(0,os.path.abspath("../source"))
 
-project = 'TS-DART'
+project = 'TS-DAR'
 copyright = '2024, Bojun Liu'
 author = 'Bojun Liu'
 release = '1.0.0'

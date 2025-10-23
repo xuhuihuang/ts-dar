@@ -31,7 +31,7 @@ Start with python script
 
 .. code-block:: bash
 
-    python ./ts-dart/scripts/train_tsdart.py \
+    python ./ts-dar/scripts/train_tsdart.py \
         --seed 1 \
         --device 'cpu' \
         --lag_time 10 \
@@ -47,11 +47,11 @@ Start with python script
         --n_epochs 20 \
         --train_split 0.9 \
         --train_batch_size 1000 \
-        --data_directory ./ts-dart/data/quadruple-well \
+        --data_directory ./ts-dar/data/quadruple-well \
         --saving_directory . 
 
 Or
 
 .. code-block:: bash
 
-    sh ./ts-dart/scripts/train_tsdart.sh
+    sh ./ts-dar/scripts/train_tsdart.sh
