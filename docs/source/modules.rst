@@ -1,7 +1,7 @@
-tsdart
+tsdar
 ======
 
 .. toctree::
    :maxdepth: 4
 
-   tsdart
+   tsdar

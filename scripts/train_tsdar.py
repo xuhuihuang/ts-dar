@@ -11,18 +11,18 @@ import torch.nn as nn
 from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import random_split
 
-from tsdart.utils import set_random_seed
-from tsdart.model import TSDART, TSDARTLayer, TSDARTModel, TSDARTEstimator
-from tsdart.dataprocessing import Preprocessing
+from tsdar.utils import set_random_seed
+from tsdar.model import TSDAR, TSDARLayer, TSDARModel, TSDAREstimator
+from tsdar.dataprocessing import Preprocessing
 
-parser = argparse.ArgumentParser(description='Training with TS-DART')
+parser = argparse.ArgumentParser(description='Training with TS-DAR')
 
 parser.add_argument('--seed', default=1, type=int, help='random seed')
 parser.add_argument('--device', default='cpu', type=str, help='train the model with gpu or cpu')
 
 parser.add_argument('--lag_time', type=int, help='the lag time used to create transition pairs', required=True)
 
-parser.add_argument('--encoder_sizes', nargs='+', type=int, help='the size of each layer in TS-DART encoder, the size of the last layer represents feat_dim', required=True)
+parser.add_argument('--encoder_sizes', nargs='+', type=int, help='the size of each layer in TS-DAR encoder, the size of the last layer represents feat_dim', required=True)
 parser.add_argument('--feat_dim', type=int, help='the dimensionality of latent space ((d-1)-hypersphere)', required=True)
 parser.add_argument('--n_states', type=int, help='the number of metastable states to consider', required=True)
 
@@ -51,7 +51,7 @@ state = {k: v for k, v in args._get_kwargs()}
 
 date_time = datetime.now().strftime("%m_%d_%H_%M")
 
-args.name = (f"{date_time}_tsdart_lr_{args.learning_rate}_bsz_{args.train_batch_size}_"
+args.name = (f"{date_time}_tsdar_lr_{args.learning_rate}_bsz_{args.train_batch_size}_"
         f"lag_time_{args.lag_time}_beta_{args.beta}_feat_dim_{args.feat_dim}_n_states_{args.n_states}_"
         f"pretrain_{args.pretrain}_n_epochs_{args.n_epochs}")
 
@@ -93,19 +93,19 @@ def main():
         else:
             loader_val = DataLoader(val_data, batch_size=args.val_batch_size, shuffle=False)
 
-    lobe = TSDARTLayer(args.encoder_sizes,n_states=args.n_states)
+    lobe = TSDARLayer(args.encoder_sizes,n_states=args.n_states)
     lobe = lobe.to(device=device)
 
-    tsdart = TSDART(lobe=lobe, learning_rate=args.learning_rate, device=device, beta=args.beta, feat_dim=args.feat_dim, n_states=args.n_states, 
+    tsdar = TSDAR(lobe=lobe, learning_rate=args.learning_rate, device=device, beta=args.beta, feat_dim=args.feat_dim, n_states=args.n_states, 
                     pretrain=args.pretrain, save_model_interval=args.save_model_interval)
-    tsdart_model = tsdart.fit(loader_train, n_epochs=args.n_epochs, validation_loader=loader_val).fetch_model()
+    tsdar_model = tsdar.fit(loader_train, n_epochs=args.n_epochs, validation_loader=loader_val).fetch_model()
 
-    validation_vamp = tsdart.validation_vamp
-    validation_dis = tsdart.validation_dis
-    validation_prototypes = tsdart.validation_prototypes
+    validation_vamp = tsdar.validation_vamp
+    validation_dis = tsdar.validation_dis
+    validation_prototypes = tsdar.validation_prototypes
 
-    training_vamp = tsdart.training_vamp
-    training_dis = tsdart.training_dis
+    training_vamp = tsdar.training_vamp
+    training_dis = tsdar.training_dis
 
     np.save((args.model_directory+'/validation_vamp.npy'),validation_vamp)
     np.save((args.model_directory+'/validation_dis.npy'),validation_dis)
@@ -115,15 +115,15 @@ def main():
     np.save((args.model_directory+'/training_dis.npy'),training_dis)
 
     if args.save_model_interval is None:
-        torch.save(tsdart_model.lobe.state_dict(), args.model_directory+'/model_{}epochs.pytorch'.format(args.n_epochs))
+        torch.save(tsdar_model.lobe.state_dict(), args.model_directory+'/model_{}epochs.pytorch'.format(args.n_epochs))
 
-        hypersphere_embs = tsdart_model.transform(data=data,return_type='hypersphere_embs')
-        metastable_states = tsdart_model.transform(data=data,return_type='states')
-        softmax_probs = tsdart_model.transform(data=data,return_type='probs')
+        hypersphere_embs = tsdar_model.transform(data=data,return_type='hypersphere_embs')
+        metastable_states = tsdar_model.transform(data=data,return_type='states')
+        softmax_probs = tsdar_model.transform(data=data,return_type='probs')
 
-        tsdart_estimator = TSDARTEstimator(tsdart_model)
-        ood_scores = tsdart_estimator.fit(data).ood_scores
-        state_centers = tsdart_estimator.fit(data).state_centers
+        tsdar_estimator = TSDAREstimator(tsdar_model)
+        ood_scores = tsdar_estimator.fit(data).ood_scores
+        state_centers = tsdar_estimator.fit(data).state_centers
 
         dir1 = args.model_directory+'/model_{}epochs_hypersphere_embs'.format(args.n_epochs)
         dir2 = args.model_directory+'/model_{}epochs_metastable_states'.format(args.n_epochs)
@@ -157,16 +157,16 @@ def main():
                 np.save((dir4+'/ood_scores_'+np_name_list[k]),ood_scores[k])
 
     else:
-        for i in range(len(tsdart._save_models)):
-            torch.save(tsdart._save_models[i].lobe.state_dict(), args.model_directory+'/model_{}epochs.pytorch'.format((i+1)*args.save_model_interval))
+        for i in range(len(tsdar._save_models)):
+            torch.save(tsdar._save_models[i].lobe.state_dict(), args.model_directory+'/model_{}epochs.pytorch'.format((i+1)*args.save_model_interval))
 
-            hypersphere_embs = tsdart._save_models[i].transform(data=data,return_type='hypersphere_embs')
-            metastable_states = tsdart._save_models[i].transform(data=data,return_type='states')
-            softmax_probs = tsdart._save_models[i].transform(data=data,return_type='probs')
+            hypersphere_embs = tsdar._save_models[i].transform(data=data,return_type='hypersphere_embs')
+            metastable_states = tsdar._save_models[i].transform(data=data,return_type='states')
+            softmax_probs = tsdar._save_models[i].transform(data=data,return_type='probs')
 
-            tsdart_estimator = TSDARTEstimator(tsdart._save_models[i])
-            ood_scores = tsdart_estimator.fit(data).ood_scores
-            state_centers = tsdart_estimator.fit(data).state_centers
+            tsdar_estimator = TSDAREstimator(tsdar._save_models[i])
+            ood_scores = tsdar_estimator.fit(data).ood_scores
+            state_centers = tsdar_estimator.fit(data).state_centers
 
             dir1 = args.model_directory+'/model_{}epochs_hypersphere_embs'.format((i+1)*args.save_model_interval)
             dir2 = args.model_directory+'/model_{}epochs_metastable_states'.format((i+1)*args.save_model_interval)

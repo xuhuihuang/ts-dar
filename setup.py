@@ -16,12 +16,12 @@ Topic :: Artificial Intelligence
 """
 
 setup(
-    name ='tsdart',
+    name ='tsdar',
     version = '1.0.0',
     python_requires = '>=3.9.0',
     install_requires = install_requires,
     extras_require = extras_require,
-    description = 'TS-DART for identifying transition state structures of biomolecular conformational dynamics',
+    description = 'TS-DAR for identifying transition state structures of biomolecular conformational dynamics',
     long_description = open("README.md", "r", encoding="utf-8").read(),
     license = 'MIT',
     author = 'Bojun Liu',

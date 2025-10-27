@@ -8,10 +8,10 @@
     from torch.utils.data.dataloader import DataLoader
     from torch.utils.data import random_split
     
-    from tsdart.utils import set_random_seed
-    from tsdart.loss import Prototypes
-    from tsdart.model import TSDART, TSDARTLayer, TSDARTEstimator
-    from tsdart.dataprocessing import Preprocessing
+    from tsdar.utils import set_random_seed
+    from tsdar.loss import Prototypes
+    from tsdar.model import TSDAR, TSDARLayer, TSDAREstimator
+    from tsdar.dataprocessing import Preprocessing
 
 .. code:: ipython3
 
@@ -114,11 +114,11 @@ Create dataset
     loader_train = DataLoader(train_data, batch_size=1000, shuffle=True)
     loader_val = DataLoader(val_data, batch_size=len(val_data), shuffle=False)
     
-    lobe = TSDARTLayer([2,20,20,20,10,2],n_states=2)
+    lobe = TSDARLayer([2,20,20,20,10,2],n_states=2)
     lobe = lobe.to(device=device)
     ### 50 epochs for fully optimization
-    tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=2, pretrain=50)
-    tsdart_model = tsdart.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
+    tsdar = TSDAR(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=2, pretrain=50)
+    tsdar_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
 
 
 .. parsed-literal::
@@ -127,8 +127,8 @@ Create dataset
 
 .. code:: ipython3
 
-    tsdart_estimator = TSDARTEstimator(tsdart_model)
-    ood_scores = tsdart_estimator.fit(data).ood_scores
+    tsdar_estimator = TSDAREstimator(tsdar_model)
+    ood_scores = tsdar_estimator.fit(data).ood_scores
 
 .. code:: ipython3
 
@@ -194,8 +194,8 @@ Create dataset
 
 .. code:: ipython3
 
-    features = tsdart_model.transform(data,return_type='hypersphere_embs')
-    state_centers = tsdart_estimator.fit(data).state_centers
+    features = tsdar_model.transform(data,return_type='hypersphere_embs')
+    state_centers = tsdar_estimator.fit(data).state_centers
 
 .. code:: ipython3
 
@@ -246,11 +246,11 @@ Create dataset
     loader_train = DataLoader(train_data, batch_size=1000, shuffle=True)
     loader_val = DataLoader(val_data, batch_size=len(val_data), shuffle=False)
     
-    lobe = TSDARTLayer([2,20,20,20,10,2],n_states=3)
+    lobe = TSDARLayer([2,20,20,20,10,2],n_states=3)
     lobe = lobe.to(device=device)
     ### 50 epochs for fully optimization
-    tsdart = TSDART(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=3, pretrain=50)
-    tsdart_model = tsdart.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
+    tsdar = TSDAR(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=3, pretrain=50)
+    tsdar_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
 
 
 .. parsed-literal::
@@ -259,8 +259,8 @@ Create dataset
 
 .. code:: ipython3
 
-    tsdart_estimator = TSDARTEstimator(tsdart_model)
-    ood_scores = tsdart_estimator.fit(data).ood_scores
+    tsdar_estimator = TSDAREstimator(tsdar_model)
+    ood_scores = tsdar_estimator.fit(data).ood_scores
 
 .. code:: ipython3
 
@@ -326,8 +326,8 @@ Create dataset
 
 .. code:: ipython3
 
-    features = tsdart_model.transform(data,return_type='hypersphere_embs')
-    state_centers = tsdart_estimator.fit(data).state_centers
+    features = tsdar_model.transform(data,return_type='hypersphere_embs')
+    state_centers = tsdar_estimator.fit(data).state_centers
 
 .. code:: ipython3
 

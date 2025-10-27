@@ -43,7 +43,7 @@ python -m pip install ./ts-dar
 
 ### Note
 
-Our python package name is currently tsdart.
+Our python package name is currently tsdar.
 
 ### Start with jupyter notebook
 
@@ -62,7 +62,7 @@ Check these two files for the demo:
 The whole training procedure of the following demo on i9-10900k cpu takes around 30mins to complete at a local desktop.
 
 ```sh
-python ./ts-dar/scripts/train_tsdart.py \
+python ./ts-dar/scripts/train_tsdar.py \
     --seed 1 \
     --device 'cpu' \
     --lag_time 10 \
@@ -84,7 +84,7 @@ python ./ts-dar/scripts/train_tsdart.py \
 
 Or
 ```
-sh ./ts-dar/scripts/train_tsdart.sh
+sh ./ts-dar/scripts/train_tsdar.sh
 ```
 
 ## Compiling Document Environment

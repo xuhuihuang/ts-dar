@@ -56,7 +56,7 @@ class Preprocessing:
         return pw_data if num_trajs > 1 else pw_data[0]
     
     def create_dataset(self, data, lag_time):
-        """ Create the dataset as the input to TS-DART.
+        """ Create the dataset as the input to TS-DAR.
 
         Parameters
         ----------

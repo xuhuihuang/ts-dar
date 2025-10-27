@@ -7,8 +7,8 @@ from tqdm import *
 from .loss import VAMPLoss, DisLoss, Prototypes
 from .utils import map_data
 
-class TSDARTLayer(nn.Module):
-    """ Create TS-DART lobe.
+class TSDARLayer(nn.Module):
+    """ Create TS-DAR lobe.
 
     Parameters
     ----------
@@ -52,13 +52,13 @@ class TSDARTLayer(nn.Module):
 
         return self.probs
 
-class TSDARTModel:
-    """ The TS-DART model from TS-DART.
+class TSDARModel:
+    """ The TS-DAR model from TS-DAR.
 
     Parameters
     ----------
     lobe : torch.nn.Module
-        TS-DART lobe.
+        TS-DAR lobe.
 
     device : torch device, default = None
         The device on which the torch modules are executed.
@@ -121,8 +121,8 @@ class TSDARTModel:
         else:
             raise ValueError('Valid return types: probs, states, hypersphere_embs')
 
-class TSDART:
-    """ The method used to train TS-DART.
+class TSDAR:
+    """ The method used to train TS-DAR.
 
     Parameters
     ----------
@@ -253,7 +253,7 @@ class TSDART:
 
         Returns
         -------
-        self : TSDART
+        self : TSDAR
         """
 
         batch_0, batch_1 = data[0], data[1]
@@ -319,7 +319,7 @@ class TSDART:
 
         Returns
         -------
-        self : TSDART
+        self : TSDAR
         """
 
         for epoch in progress(range(n_epochs), desc="epoch", total=n_epochs, leave=False):
@@ -356,20 +356,20 @@ class TSDART:
         from copy import deepcopy
         lobe = deepcopy(self._lobe)
 
-        return TSDARTModel(lobe, device=self._device, dtype=self._dtype)
+        return TSDARModel(lobe, device=self._device, dtype=self._dtype)
     
-class TSDARTEstimator:
-    """ The TS-DART estimator the generate the state center vectors and ood scores of original trajectories.
+class TSDAREstimator:
+    """ The TS-DAR estimator the generate the state center vectors and ood scores of original trajectories.
 
     Parameters
     ----------
-    tsdart_model : TSDARTModel
-        The trained TS-DART model.
+    tsdar_model : TSDARModel
+        The trained TS-DAR model.
     """
 
-    def __init__(self, tsdart_model: TSDARTModel):
+    def __init__(self, tsdar_model: TSDARModel):
 
-        self._model = tsdart_model
+        self._model = tsdar_model
         self._state_centers = None
         self._ood_scores = None
         self._is_fitted = False
@@ -389,7 +389,7 @@ class TSDARTEstimator:
             return self._ood_scores
 
     def fit(self, data):
-        """ Fit the TS-DART model with original trajectories to compute OOD scores and state center vectors.
+        """ Fit the TS-DAR model with original trajectories to compute OOD scores and state center vectors.
 
         Parameters
         ----------
@@ -398,7 +398,7 @@ class TSDARTEstimator:
 
         Returns
         -------
-        self : TSDARTEstimator
+        self : TSDAREstimator
         """
 
         states = self._model.transform(data, return_type='states')
