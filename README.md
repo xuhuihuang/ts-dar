@@ -62,7 +62,7 @@ Check these two files for the demo:
 The whole training procedure of the following demo on i9-10900k cpu takes around 30mins to complete at a local desktop.
 
 ```sh
-python ./ts-dar/scripts/train_tsdart.py \
+python ./ts-dar/scripts/train_tsdar.py \
     --seed 1 \
     --device 'cpu' \
     --lag_time 10 \
@@ -84,7 +84,7 @@ python ./ts-dar/scripts/train_tsdart.py \
 
 Or
 ```
-sh ./ts-dar/scripts/train_tsdart.sh
+sh ./ts-dar/scripts/train_tsdar.sh
 ```
 
 ## Compiling Document Environment
@@ -98,7 +98,7 @@ cd docs
 make html
 ```
 (Warnings can be ignored!)
-You can also visit our [documentation online](https://bojunliu0818.github.io/ts-dar-doc/html/index.html)
+You can also visit our [documentation online](https://bojunliu0818.github.io/ts-dart-doc/html/index.html)
 
 ## More instructions 
 

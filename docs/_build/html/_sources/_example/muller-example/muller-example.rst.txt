@@ -118,7 +118,7 @@ Create dataset
     lobe = lobe.to(device=device)
     ### 50 epochs for fully optimization
     tsdar = TSDAR(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=2, pretrain=50)
-    tsdart_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
+    tsdar_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
 
 
 .. parsed-literal::
@@ -127,8 +127,8 @@ Create dataset
 
 .. code:: ipython3
 
-    tsdart_estimator = TSDAREstimator(tsdart_model)
-    ood_scores = tsdart_estimator.fit(data).ood_scores
+    tsdar_estimator = TSDAREstimator(tsdar_model)
+    ood_scores = tsdar_estimator.fit(data).ood_scores
 
 .. code:: ipython3
 
@@ -194,8 +194,8 @@ Create dataset
 
 .. code:: ipython3
 
-    features = tsdart_model.transform(data,return_type='hypersphere_embs')
-    state_centers = tsdart_estimator.fit(data).state_centers
+    features = tsdar_model.transform(data,return_type='hypersphere_embs')
+    state_centers = tsdar_estimator.fit(data).state_centers
 
 .. code:: ipython3
 
@@ -250,7 +250,7 @@ Create dataset
     lobe = lobe.to(device=device)
     ### 50 epochs for fully optimization
     tsdar = TSDAR(lobe = lobe, learning_rate = 1e-3, device = device, mode = 'regularize', beta=0.01, feat_dim=2, n_states=3, pretrain=50)
-    tsdart_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
+    tsdar_model = tsdar.fit(loader_train, n_epochs=100, validation_loader=loader_val).fetch_model()
 
 
 .. parsed-literal::
@@ -259,8 +259,8 @@ Create dataset
 
 .. code:: ipython3
 
-    tsdart_estimator = TSDAREstimator(tsdart_model)
-    ood_scores = tsdart_estimator.fit(data).ood_scores
+    tsdar_estimator = TSDAREstimator(tsdar_model)
+    ood_scores = tsdar_estimator.fit(data).ood_scores
 
 .. code:: ipython3
 
@@ -326,8 +326,8 @@ Create dataset
 
 .. code:: ipython3
 
-    features = tsdart_model.transform(data,return_type='hypersphere_embs')
-    state_centers = tsdart_estimator.fit(data).state_centers
+    features = tsdar_model.transform(data,return_type='hypersphere_embs')
+    state_centers = tsdar_estimator.fit(data).state_centers
 
 .. code:: ipython3
 

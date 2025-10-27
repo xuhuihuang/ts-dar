@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -5,19 +7,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>tsdar package &mdash; TS-DAR 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=8d563738"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -104,9 +102,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#tsdar.model.TSDARLayer.forward"><code class="docutils literal notranslate"><span class="pre">TSDARLayer.forward()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#tsdar.model.TSDARTModel"><code class="docutils literal notranslate"><span class="pre">TSDARTModel</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tsdar.model.TSDARTModel.lobe"><code class="docutils literal notranslate"><span class="pre">TSDARTModel.lobe</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tsdar.model.TSDARTModel.transform"><code class="docutils literal notranslate"><span class="pre">TSDARTModel.transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tsdar.model.TSDARModel"><code class="docutils literal notranslate"><span class="pre">TSDARModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tsdar.model.TSDARModel.lobe"><code class="docutils literal notranslate"><span class="pre">TSDARModel.lobe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tsdar.model.TSDARModel.transform"><code class="docutils literal notranslate"><span class="pre">TSDARModel.transform()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -154,7 +152,7 @@
 <span id="tsdar-dataprocessing-module"></span><h2>tsdar.dataprocessing module<a class="headerlink" href="#module-tsdar.dataprocessing" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.dataprocessing.Preprocessing">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.dataprocessing.</span></span><span class="sig-name descname"><span class="pre">Preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.dataprocessing.Preprocessing" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.dataprocessing.</span></span><span class="sig-name descname"><span class="pre">Preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.dataprocessing.Preprocessing" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Preprocess the original trajectories to create datasets for training.</p>
 <section id="parameters">
@@ -211,12 +209,12 @@ Each tuple has two elements: one is the instantaneous data frame, the other is t
 <span id="tsdar-loss-module"></span><h2>tsdar.loss module<a class="headerlink" href="#module-tsdar.loss" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.loss.DisLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.loss.</span></span><span class="sig-name descname"><span class="pre">DisLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feat_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto_update_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.DisLoss" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.loss.</span></span><span class="sig-name descname"><span class="pre">DisLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feat_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto_update_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fast_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.DisLoss" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Compute dispersion loss.</p>
 <section id="id4">
 <h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<dl class="simple">
+<dl>
 <dt>feat_dim<span class="classifier">int</span></dt><dd><p>The dimension of the euclidean space where the latent hypersphere is embedded.
 The dimension of latent hypersphere is (feat_dim-1).</p>
 </dd>
@@ -228,6 +226,12 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 </dd>
 <dt>scaling_temperature<span class="classifier">float, default = 0.1</span></dt><dd><p>The scaling hyperparameter to compute dispersion loss.</p>
 </dd>
+<dt>fast_mode<span class="classifier">bool, default = False</span></dt><dd><dl class="simple">
+<dt>If True, use the mean of features for each label to update prototypes.</dt><dd><p>This is a matrix operation thus faster.</p>
+</dd>
+</dl>
+<p>If False, use the features of each data point</p>
+</dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsdar.loss.DisLoss.clear">
@@ -237,7 +241,7 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tsdar.loss.DisLoss.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.DisLoss.forward" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fast_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.DisLoss.forward" title="Link to this definition"></a></dt>
 <dd><p>Compute dispersion loss at every call.</p>
 <section id="id5">
 <h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
@@ -245,6 +249,10 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 <dt>features<span class="classifier">torch.Tensor</span></dt><dd><p>Hyperspherical embeddings of a batch of data.</p>
 </dd>
 <dt>labels<span class="classifier">torch.Tensor</span></dt><dd><p>Metastable states of a batch of data.</p>
+</dd>
+<dt>fast_mode<span class="classifier">bool, default = None</span></dt><dd><p>If None, use the class’s fast_mode attribute.
+If True, use the mean of features for each label to update prototypes.
+If False, use the features of each data point</p>
 </dd>
 </dl>
 </section>
@@ -281,7 +289,7 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.loss.Prototypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.loss.</span></span><span class="sig-name descname"><span class="pre">Prototypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.Prototypes" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.loss.</span></span><span class="sig-name descname"><span class="pre">Prototypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.Prototypes" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Compute the prototypes (state center vectors). Used for evaluating validation data.</p>
 <section id="id8">
@@ -353,7 +361,7 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.loss.VAMPLoss">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.loss.</span></span><span class="sig-name descname"><span class="pre">VAMPLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'regularize'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetrized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.VAMPLoss" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.loss.</span></span><span class="sig-name descname"><span class="pre">VAMPLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'regularize'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetrized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.loss.VAMPLoss" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Compute VAMP2 loss.</p>
 <section id="id13">
@@ -420,7 +428,7 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 <span id="tsdar-model-module"></span><h2>tsdar.model module<a class="headerlink" href="#module-tsdar.model" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.model.TSDAR">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDAR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lobe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer='Adam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate=0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon=1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode='regularize'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetrized=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat_dim=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_states=4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto_update_factor=0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_temperature=0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta=0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model_interval=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrain=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDAR" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDAR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lobe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer='Adam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate=0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon=1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode='regularize'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetrized=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat_dim=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_states=4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto_update_factor=0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_temperature=0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta=0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model_interval=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrain=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fast_mode=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDAR" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The method used to train TS-DAR.</p>
 <section id="id17">
@@ -459,6 +467,9 @@ The dimension of latent hypersphere is (feat_dim-1).</p>
 <dt>pretrain<span class="classifier">int, default = 0</span></dt><dd><p>The number of epochs of the pretraining with pure VAMP2 loss.</p>
 </dd>
 <dt>print<span class="classifier">boolean, default = False</span></dt><dd><p>Whether to print the validation loss every epoch during the training.</p>
+</dd>
+<dt>fast_mode<span class="classifier">boolean, default = False</span></dt><dd><p>Whether to use fast mode for DisLoss.
+Fast mode uses batch EMA to update prototypes, but may be less accurate then EMA per datapoint.</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -509,12 +520,12 @@ Note that n_epochs should be larger than pretrain.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAR.training_dis">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">training_dis</span></span><a class="headerlink" href="#tsdar.model.TSDAR.training_dis" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">training_dis</span></span><a class="headerlink" href="#tsdar.model.TSDAR.training_dis" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAR.training_vamp">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">training_vamp</span></span><a class="headerlink" href="#tsdar.model.TSDAR.training_vamp" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">training_vamp</span></span><a class="headerlink" href="#tsdar.model.TSDAR.training_vamp" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -532,17 +543,17 @@ Note that n_epochs should be larger than pretrain.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAR.validation_dis">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_dis</span></span><a class="headerlink" href="#tsdar.model.TSDAR.validation_dis" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_dis</span></span><a class="headerlink" href="#tsdar.model.TSDAR.validation_dis" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAR.validation_prototypes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_prototypes</span></span><a class="headerlink" href="#tsdar.model.TSDAR.validation_prototypes" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_prototypes</span></span><a class="headerlink" href="#tsdar.model.TSDAR.validation_prototypes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAR.validation_vamp">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_vamp</span></span><a class="headerlink" href="#tsdar.model.TSDAR.validation_vamp" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_vamp</span></span><a class="headerlink" href="#tsdar.model.TSDAR.validation_vamp" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -550,13 +561,13 @@ Note that n_epochs should be larger than pretrain.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.model.TSDAREstimator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDAREstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tsdart_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tsdar.model.TSDARTModel" title="tsdar.model.TSDARTModel"><span class="pre">TSDARTModel</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDAREstimator" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDAREstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tsdar_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tsdar.model.TSDARModel" title="tsdar.model.TSDARModel"><span class="pre">TSDARModel</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDAREstimator" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The TS-DAR estimator the generate the state center vectors and ood scores of original trajectories.</p>
 <section id="id23">
 <h3>Parameters<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
 <dl class="simple">
-<dt>tsdart_model<span class="classifier">TSDARTModel</span></dt><dd><p>The trained TS-DAR model.</p>
+<dt>tsdar_model<span class="classifier">TSDARModel</span></dt><dd><p>The trained TS-DAR model.</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -578,12 +589,12 @@ Note that n_epochs should be larger than pretrain.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAREstimator.ood_scores">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ood_scores</span></span><a class="headerlink" href="#tsdar.model.TSDAREstimator.ood_scores" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ood_scores</span></span><a class="headerlink" href="#tsdar.model.TSDAREstimator.ood_scores" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="tsdar.model.TSDAREstimator.state_centers">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state_centers</span></span><a class="headerlink" href="#tsdar.model.TSDAREstimator.state_centers" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state_centers</span></span><a class="headerlink" href="#tsdar.model.TSDAREstimator.state_centers" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -591,7 +602,7 @@ Note that n_epochs should be larger than pretrain.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tsdar.model.TSDARLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDARLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_sizes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDARLayer" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDARLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_sizes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDARLayer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>Create TS-DAR lobe.</p>
 <section id="id26">
@@ -623,8 +634,8 @@ registered hooks while the latter silently ignores them.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="tsdar.model.TSDARTModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDARTModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lobe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDARTModel" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="tsdar.model.TSDARModel">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tsdar.model.</span></span><span class="sig-name descname"><span class="pre">TSDARModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lobe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDARModel" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The TS-DAR model from TS-DAR.</p>
 <section id="id27">
@@ -638,13 +649,13 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 <dl class="py property">
-<dt class="sig sig-object py" id="tsdar.model.TSDARTModel.lobe">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lobe</span></span><a class="headerlink" href="#tsdar.model.TSDARTModel.lobe" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="tsdar.model.TSDARModel.lobe">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lobe</span></span><a class="headerlink" href="#tsdar.model.TSDARModel.lobe" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="tsdar.model.TSDARTModel.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probs'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDARTModel.transform" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="tsdar.model.TSDARModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probs'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsdar.model.TSDARModel.transform" title="Link to this definition"></a></dt>
 <dd><p>Transform the original trajectores to different outputs after training.</p>
 <section id="id28">
 <h4>Parameters<a class="headerlink" href="#id28" title="Link to this heading"></a></h4>

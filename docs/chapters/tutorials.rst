@@ -31,7 +31,7 @@ Start with python script
 
 .. code-block:: bash
 
-    python ./ts-dar/scripts/train_tsdart.py \
+    python ./ts-dar/scripts/train_tsdar.py \
         --seed 1 \
         --device 'cpu' \
         --lag_time 10 \
@@ -54,4 +54,4 @@ Or
 
 .. code-block:: bash
 
-    sh ./ts-dar/scripts/train_tsdart.sh
+    sh ./ts-dar/scripts/train_tsdar.sh

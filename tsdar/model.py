@@ -52,7 +52,7 @@ class TSDARLayer(nn.Module):
 
         return self.probs
 
-class TSDARTModel:
+class TSDARModel:
     """ The TS-DAR model from TS-DAR.
 
     Parameters
@@ -356,20 +356,20 @@ class TSDAR:
         from copy import deepcopy
         lobe = deepcopy(self._lobe)
 
-        return TSDARTModel(lobe, device=self._device, dtype=self._dtype)
+        return TSDARModel(lobe, device=self._device, dtype=self._dtype)
     
 class TSDAREstimator:
     """ The TS-DAR estimator the generate the state center vectors and ood scores of original trajectories.
 
     Parameters
     ----------
-    tsdart_model : TSDARTModel
+    tsdar_model : TSDARModel
         The trained TS-DAR model.
     """
 
-    def __init__(self, tsdart_model: TSDARTModel):
+    def __init__(self, tsdar_model: TSDARModel):
 
-        self._model = tsdart_model
+        self._model = tsdar_model
         self._state_centers = None
         self._ood_scores = None
         self._is_fitted = False

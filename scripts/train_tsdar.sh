@@ -1,4 +1,4 @@
-python ./ts-dar/scripts/train_tsdart.py \
+python ./ts-dar/scripts/train_tsdar.py \
     --seed 1 \
     --device 'cpu' \
     --lag_time 10 \
