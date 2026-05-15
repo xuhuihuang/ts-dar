@@ -8,6 +8,7 @@ Identifying transitional states is crucial for understanding protein conformatio
 Liu, B., Boysen, J.G., Unarta, I.C., Du, X., Li, Y., Huang, X.* “[Exploring Transition States of Protein Conformational Changes via Out-of-Distribution Detection in the Hyperspherical Latent Space](https://www.nature.com/articles/s41467-024-55228-4)“, Nature Communications, 16, 349, (2025) 
 
 A practical guide: https://github.com/xuhuihuang/ts-dar-tutorials
+
 Goonetilleke, E.C., Liu, B., Wu, Y., O’Connor, M.S., Huang, X.*,, “[A Practical Guide to Transition State Analysis in Biomolecular Simulations with TS-DAR](https://pubs.acs.org/doi/10.1021/acs.jpcb.5c06097)”, J. Phys. Chem. B., 21(9), 4855-4866, (2025)
 
 Link to a tutorial gallery:
