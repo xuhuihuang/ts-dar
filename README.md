@@ -118,13 +118,13 @@ To reproduce the results of the other datasets reported in this paper, please re
 
 [We also created a tutorial gallery containing step-by-step guide to train TS-DAR models for vairous systems](https://ts-dar-gallery.readthedocs.io/en/latest/examples.html). We will keep updating this tutorial gallery and it currently contains the following examples:
 
-# Alanine Dipeptide: 
+### Alanine Dipeptide: 
 https://ts-dar-gallery.readthedocs.io/en/latest/examples/alanine_dipeptide/Alanine_dipeptide.html
 
-# HP35: 
+### HP35: 
 https://ts-dar-gallery.readthedocs.io/en/latest/examples/hp35/HP35.html
 
-# PP2A: 
+### PP2A: 
 https://ts-dar-gallery.readthedocs.io/en/latest/examples/pp2a/PP2A.html
 
 Please refer to a practical guide for more details: https://github.com/xuhuihuang/ts-dar-tutorials
