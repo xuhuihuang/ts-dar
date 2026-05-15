@@ -114,7 +114,7 @@ We already added the example of Muller potential reported in this preprint to th
 
 To reproduce the results of the other datasets reported in this preprint, please refer to [Zenodo](https://zenodo.org/records/13835580), where we have uploaded all of our training results and raw simulation data. Or you can directly contact bliu293@wisc.edu.
 
-##Tutorial gallery
+## Tutorial gallery
 
 [Our tutorial gallery contains the following examples](https://ts-dar-gallery.readthedocs.io/en/latest/examples.html):
 
