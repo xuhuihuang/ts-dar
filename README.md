@@ -110,22 +110,24 @@ You can also visit our [documentation online](https://bojunliu0818.github.io/ts-
 
 TS-DAR refers to the paper: Liu, B., Boysen, J.G., Unarta, I.C., Du, X., Li, Y., Huang, X.* “[Exploring Transition States of Protein Conformational Changes via Out-of-Distribution Detection in the Hyperspherical Latent Space](https://www.nature.com/articles/s41467-024-55228-4)“, Nature Communications, 16, 349, (2025)  
 
-We already added the example of Muller potential reported in this preprint to the repo. 
+We already added the example of Muller potential reported in this paper to the repo. 
 
-To reproduce the results of the other datasets reported in this preprint, please refer to [Zenodo](https://zenodo.org/records/13835580), where we have uploaded all of our training results and raw simulation data. Or you can directly contact bliu293@wisc.edu.
+To reproduce the results of the other datasets reported in this paper, please refer to [Zenodo](https://zenodo.org/records/13835580), where we have uploaded all of our training results and raw simulation data. Or you can directly contact bliu293@wisc.edu.
 
 ## Tutorial gallery
 
-[Our tutorial gallery contains the following examples](https://ts-dar-gallery.readthedocs.io/en/latest/examples.html):
+[We also created a tutorial gallery containing step-by-step guide to train TS-DAR models for vairous systems](https://ts-dar-gallery.readthedocs.io/en/latest/examples.html). We will keep updating this tutorial gallery and it currently contains the following examples:
 
-Alanine Dipeptide: https://ts-dar-gallery.readthedocs.io/en/latest/examples/alanine_dipeptide/Alanine_dipeptide.html
+# Alanine Dipeptide: 
+https://ts-dar-gallery.readthedocs.io/en/latest/examples/alanine_dipeptide/Alanine_dipeptide.html
 
-HP35: https://ts-dar-gallery.readthedocs.io/en/latest/examples/hp35/HP35.html
+# HP35: 
+https://ts-dar-gallery.readthedocs.io/en/latest/examples/hp35/HP35.html
 
-PP2A: https://ts-dar-gallery.readthedocs.io/en/latest/examples/pp2a/PP2A.html
+# PP2A: 
+https://ts-dar-gallery.readthedocs.io/en/latest/examples/pp2a/PP2A.html
 
 Please refer to a practical guide for more details: https://github.com/xuhuihuang/ts-dar-tutorials
-
 Goonetilleke, E.C., Liu, B., Wu, Y., O’Connor, M.S., Huang, X.*,, “[A Practical Guide to Transition State Analysis in Biomolecular Simulations with TS-DAR](https://pubs.acs.org/doi/10.1021/acs.jpcb.5c06097)”, J. Phys. Chem. B., 21(9), 4855-4866, (2025)
 
 ## Reference
